@@ -106,7 +106,7 @@ create_project <- function(name, title, author, email, inst, root) {
     paste(name, "LICENSE", sep="/"),
     paste(name, "Makefile", sep="/"),
     paste(name, "/src/", name, "_ms.org", sep=""),
-    paste(name, "/templates/", "elisp-header.org", sep=""),
+    paste(name, "/templates/", "elisp-header.el", sep=""),
     paste(name, "/templates/", "header.org", sep=""),
     paste(name, "/templates/", "version.R", sep=""),
     paste(name, "/ext/LaTeX/", "Module1.xba", sep=""),
