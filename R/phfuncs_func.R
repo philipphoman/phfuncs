@@ -72,23 +72,45 @@ create_project <- function(name, title, author, email, inst, root) {
     "src",
     "lib",
     "doc",
+    "templates",
     "output/figures",
     "output/R",
     "output/tmp",
     "pub",
-    "ext"
+    "ext/LaTeX",
+    "ext/logos"
   )
   files <- c(
     "README.org",
-    "LICENCE",
+    "LICENSE",
     "Makefile",
-    "ms.org"
+    "ms.org",
+    "elisp-header.el",
+    "header.org",
+    "version.R",
+    "Module1.xba",
+    "dialog.xlb",
+    "script.xlb",
+    "scientifictemplate.ott",
+    "install_macro.sh",
+    "uninstall_macro.sh",
+    "dotemacs"
   )
   targets <- c(
     paste(name, "README.org", sep="/"),
     paste(name, "LICENSE", sep="/"),
     paste(name, "Makefile", sep="/"),
-    paste(name, "/src/", name, "_ms.org", sep="")
+    paste(name, "/src/", name, "_ms.org", sep=""),
+    paste(name, "/templates/", "elisp-header.org", sep=""),
+    paste(name, "/templates/", "header.org", sep=""),
+    paste(name, "/templates/", "version.R", sep=""),
+    paste(name, "/ext/LaTeX/", "Module1.xba", sep=""),
+    paste(name, "/ext/LaTeX/", "dialog.xlb", sep=""),
+    paste(name, "/ext/LaTeX/", "script.xlb", sep=""),
+    paste(name, "/ext/", "scientifictemplate.ott", sep=""),
+    paste(name, "/ext/", "install_macro.sh", sep=""),
+    paste(name, "/ext/", "uninstall_macro.sh", sep="")
+    paste(name, "/ext/", "dotemacs", sep="")
   )
   
   #dir.create(project_name)
@@ -106,28 +128,28 @@ create_project <- function(name, title, author, email, inst, root) {
 
     # parse the file
     # replace @@name@@ by project name
-    system(paste("sed -e 's/@@name@@/", name, "/g'", files[i],
-                 "> tmp.txt", sep="")) 
+    system(paste("sed -e 's/@@name@@/", name, "/g' ", to,
+                 " > tmp.txt", sep="")) 
 
     # replace @@title@@ by project title 
-    system(paste("sed -e 's/@@title@@/", title, "/g'", "tmp.txt >",
-                 files[i], sep="")) 
+    system(paste("sed -e 's/@@title@@/", title, "/g' ", "tmp.txt > ",
+                 to, sep="")) 
   
     # replace @@author@@ by project author 
-    system(paste("sed -e 's/@@author@@/", author, "/g'", files[i],
-                 "> tmp.txt", sep="")) 
+    system(paste("sed -e 's/@@author@@/", author, "/g' ", to,
+                 " > tmp.txt", sep="")) 
 
     # replace @@email@@ by project author's email 
-    system(paste("sed -e 's/@@email@@/", email, "/g'", "tmp.txt >",
-                 files[i], sep="")) 
+    system(paste("sed -e 's/@@email@@/", email, "/g' ", "tmp.txt >",
+                 to, sep="")) 
 
     # replace @@root@@ by project root 
-    system(paste("sed -e 's/@@root@@/", root, "/g'", files[i],
-                 "> tmp.txt", sep="")) 
+    system(paste("sed -e 's/@@root@@/", root, "/g' ", to,
+                 " > tmp.txt", sep="")) 
 
     # replace @@inst@@ by project author's institution 
-    system(paste("sed -e 's/@@inst@@/", inst, "/g'",
-                 "tmp.txt >", files[i], sep="")) 
+    system(paste("sed -e 's/@@inst@@/", inst, "/g' ",
+                 "tmp.txt > ", to, sep="")) 
     
   }
 }

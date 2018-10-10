@@ -3,12 +3,8 @@
 ;(setq org-export-date-timestamp-format "%FT%T%z")
 (require 'org-wc)
 (flyspell-mode t)
-;(evil-declare-change-repeat 'company-complete)
-(setq synosaurus-choose-method 'popup)
 (synosaurus-mode t)
 (auto-complete-mode t)
-;(ac-config-default)
-;(add-to-list 'ac-modes 'org-mode)
 (linum-mode t)
 (whitespace-mode t)
 (setq org-babel-inline-result-wrap "%s")
@@ -21,25 +17,23 @@
 ; don't remove logfiles at export
 (setq org-latex-remove-logfiles nil)
 
-; Keybindings
+; keybindings
 ; (global-set-key (kbd "<f7> c") "#+CAPTION: ")
 (defun setfillcolumn72 ()
-	 (interactive)
-	 (setq fill-column 72)
-	 )
+	(interactive)
+	(setq fill-column 72)
+)
 
 (defun setfillcolumn42 ()
-	 (interactive)
-	 (setq fill-column 42)
- )
-(define-key org-mode-map (kbd "C-c c #") "#+CAPTION: ")
-(define-key org-mode-map (kbd "C-c l #") "#+LATEX_HEADER: ")
+	(interactive)
+	(setq fill-column 42)
+)
+(define-key org-mode-map (kbd "C-c #") "#+CAPTION: ")
 (define-key org-mode-map (kbd "C-c f c 4 2") 'setfillcolumn42)
 (define-key org-mode-map (kbd "C-c f c 7 2") 'setfillcolumn72)
 
 (setq org-odt-category-map-alist
-		'(("__Figure__" "*Figure*" "value" "Figure" org-odt--enumerable-image-p)))
-
+	 '(("__figure__" "*figure*" "value" "figure" org-odt--enumerable-image-p)))
 
 ; let ess not ask for starting directory
 (setq ess-ask-for-ess-directory nil)
@@ -47,13 +41,42 @@
 ;(setq org-latex-pdf-process '("latexmk -pdflatex='xelatex
 ;-output-directory=../output/tex/ -interaction nonstopmode' -pdf
 ;-bibtex -f %f"))
+
+;(setq org-latex-pdf-process '("latexmk -pdf 
+;	-pdflatex='xelatex -shell-escape -interaction nonstopmode' -bibtex -f %f "))
+(setq org-latex-pdf-process '("latexmk -pdflatex='xelatex -interaction nonstopmode' -shell-escape -pdf -bibtex -f %f"))
+
 (setq org-latex-logfiles-extensions 
-		(quote("bcf" "blg" "fdb_latexmk" "fls" 
-		"figlist" "idx" "log" "nav" "out" "ptc" 
-		"run.xml" "snm" "toc" "vrb" "xdv")))
+	 (quote("bcf" "blg" "fdb_latexmk" "fls" 
+	 "figlist" "idx" "log" "nav" "out" "ptc" 
+	 "run.xml" "snm" "toc" "vrb" "xdv")))
 
-; deactivate link resolving
-(setq org-activate-links nil)
+(add-to-list 'org-structure-template-alist
+ '("ca" "#+CAPTION: "))
 
-; set tags position
-(setq org-tags-column -72)
+(add-to-list 'org-structure-template-alist
+ '("he" "#+LATEX_HEADER: "))
+
+(add-to-list 'org-structure-template-alist
+ '("dc" "src_R[:session]{}"))
+
+(add-to-list 'org-structure-template-alist
+ '("sr" "#+HEADER: :exports none
+,#+begin_src R :colnames yes :results silent :session\n")) 
+
+(add-to-list 'org-structure-template-alist
+ '("er" "#+END_SRC"))
+ 
+(let ((case-fold-search t)) ; or nil
+
+  (goto-char (point-min))
+  (while (search-forward "'" nil t)
+    (replace-match "'"))
+
+  (goto-char (point-min))
+  (while (search-forward "-" nil t)
+    (replace-match "-"))
+
+  ;; repeat for other string pairs
+  )
+

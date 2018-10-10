@@ -2,7 +2,7 @@
 ** Preamble                                                     :ignore:
 *** org specific settings                                      :ignore:
 # ----------------------------------------------------------------------
-#+INCLUDE: header.org src org :exports none :results silent
+#+INCLUDE: templates/header.org src org :exports none :results silent
 # ----------------------------------------------------------------------
 *** Buffer-wide source code blocks                             :ignore:
 # ----------------------------------------------------------------------
@@ -10,14 +10,13 @@
 # inline results and a paragraph size of 80 characters Important: this
 # has to be evaluated witch C-c C-c in order to work in the current
 # buffer
-#+INCLUDE: elisp-header.el src emacs-lisp :exports none :results silent
+#+INCLUDE: templates/elisp-header.el src emacs-lisp :exports none :results silent
 # ----------------------------------------------------------------------
 *** End preamble                                               :ignore:
 # ----------------------------------------------------------------------
 
 ** Code                                                :noexport:ignore:
-#+HEADER: :exports none
-#+BEGIN_SRC R :results silent :session
+#+BEGIN_SRC R :exports none :results silent :session
 # set variables
 source("src/@@name@@_load.R")
 #+END_SRC
@@ -50,7 +49,7 @@ the end of this file
 Clone the repository or download the zip file.
 
 ** Running the analysis
-Change to the root directory and run 'make analysis'.
+Change to the @@name@@ directory and run 'make analysis'.
 
 ** Producing the figures
 Change to the @@name@@ directory and run 'make figures'. The figures can then
