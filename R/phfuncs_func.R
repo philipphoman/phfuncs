@@ -85,6 +85,10 @@ create_project <- function(name, title, author, email, inst, root) {
     "LICENSE",
     "Makefile",
     "ms.org",
+    "clean.R",
+    "func.R",
+    "do.R",
+    "load.R",
     "elisp-header.el",
     "header.org",
     "version.R",
@@ -106,6 +110,10 @@ create_project <- function(name, title, author, email, inst, root) {
     paste(name, "LICENSE", sep="/"),
     paste(name, "Makefile", sep="/"),
     paste(name, "/src/", name, "_ms.org", sep=""),
+    paste(name, "/src/", name, "_clean.R", sep=""),
+    paste(name, "/src/", name, "_load.R", sep=""),
+    paste(name, "/src/", name, "_func.R", sep=""),
+    paste(name, "/src/", name, "_do.R", sep=""),
     paste(name, "/templates/", "elisp-header.el", sep=""),
     paste(name, "/templates/", "header.org", sep=""),
     paste(name, "/templates/", "version.R", sep=""),
@@ -161,6 +169,10 @@ create_project <- function(name, title, author, email, inst, root) {
     system(paste("sed -e 's/@@inst@@/", inst, "/g' ",
                  "tmp.txt > ", to, sep="")) 
     
+    # replace @@date@@ by today's date 
+    system(paste("sed -e 's/@@date@@/", date(), "/g' ", to,
+                 " > tmp.txt", sep="")) 
+    file.copy("tmp.txt", to)
   }
 }
 

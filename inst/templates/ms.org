@@ -2,10 +2,10 @@
 * Preamble                                                    :ignore:
 ** General comments                                           :ignore:
 # ----------------------------------------------------------------------
-# - Turn on synonyms by starting synosaurus-mode
-# - Look up words using C-c sr
-# - Turn on dictionary by starting flyspell-mode
-# - Count words by section using org-wc-display
+# @@name@@_ms.org
+#
+# created on @@date@@
+# @@author@@, <@@email@@>
 # ----------------------------------------------------------------------
 ** Specific comments for this manuscript                      :ignore:
 # ----------------------------------------------------------------------
@@ -13,7 +13,9 @@
 # ----------------------------------------------------------------------
 ** org specific settings                                      :ignore:
 # ----------------------------------------------------------------------
-#+INCLUDE: ../templates/header.org src org :exports none :results silent
+#+BEGIN_SRC sh :results output drawer :exports none 
+cat ../templates/header.org
+#+END_SRC
 # ----------------------------------------------------------------------
 ** Latex header                                               :ignore:
 # ----------------------------------------------------------------------
@@ -66,7 +68,9 @@
 # inline results and a paragraph size of 80 characters Important: this
 # has to be evaluated witch C-c C-c in order to work in the current
 # buffer
-#+INCLUDE: ../templates/elisp-header.el src emacs-lisp :exports none :results silent
+#+BEGIN_SRC sh :results output drawer :exports none 
+cat ../templates/elisp-header.org
+#+END_SRC
 # ----------------------------------------------------------------------
 # End preamble
 # ----------------------------------------------------------------------
