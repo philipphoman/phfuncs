@@ -89,7 +89,7 @@ create_project <- function(name, title, author, email, inst, root) {
     "func.R",
     "do.R",
     "load.R",
-    "elisp-header.el",
+    "elisp-header.org",
     "header.org",
     "version.R",
     "Module1.xba",
@@ -114,7 +114,7 @@ create_project <- function(name, title, author, email, inst, root) {
     paste(name, "/src/", name, "_load.R", sep=""),
     paste(name, "/src/", name, "_func.R", sep=""),
     paste(name, "/src/", name, "_do.R", sep=""),
-    paste(name, "/templates/", "elisp-header.el", sep=""),
+    paste(name, "/templates/", "elisp-header.org", sep=""),
     paste(name, "/templates/", "header.org", sep=""),
     paste(name, "/templates/", "version.R", sep=""),
     paste(name, "/ext/LaTeX/", "Module1.xba", sep=""),
@@ -170,9 +170,10 @@ create_project <- function(name, title, author, email, inst, root) {
                  "tmp.txt > ", to, sep="")) 
     
     # replace @@date@@ by today's date 
+    datestr <- date()
     system(paste("sed -e 's/@@date@@/", date(), "/g' ", to,
                  " > tmp.txt", sep="")) 
-    file.copy("tmp.txt", to)
+    file.copy("tmp.txt", to, overwrite=TRUE)
   }
 }
 
