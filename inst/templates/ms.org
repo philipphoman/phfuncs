@@ -201,11 +201,11 @@ source("@@name@@_load.R")
 ** Table. Sample                                              :ignore:
 *** Code                                             :noexport:ignore:
 #+NAME: table1 
-#+HEADER: :exports results 
-#+BEGIN_SRC R :results value :colnames yes :session :cache nil
-#cc <- parse_table(cc)
-#return(cc)
-#+END_SRC
+# HEADER: :exports results 
+# BEGIN_SRC R :results value :colnames yes :session :cache nil
+# cc <- parse_table(cc)
+# return(cc)
+# END_SRC
 
 *** Table                                                       :ignore:
 #+CAPTION: *Sample characteristics*.
