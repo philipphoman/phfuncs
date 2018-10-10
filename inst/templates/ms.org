@@ -66,7 +66,7 @@
 # inline results and a paragraph size of 80 characters Important: this
 # has to be evaluated witch C-c C-c in order to work in the current
 # buffer
-#+INCLUDE: templates/elisp-header.el src emacs-lisp :exports none :results silent
+#+INCLUDE: ../templates/elisp-header.el src emacs-lisp :exports none :results silent
 # ----------------------------------------------------------------------
 # End preamble
 # ----------------------------------------------------------------------
