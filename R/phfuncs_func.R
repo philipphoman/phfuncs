@@ -94,7 +94,12 @@ create_project <- function(name, title, author, email, inst, root) {
     "scientifictemplate.ott",
     "install_macro.sh",
     "uninstall_macro.sh",
-    "dotemacs"
+    "dotemacs",
+    "logo.pdf",
+    "logo_feinstein.pdf",
+    "github.pdf",
+    "twitter.pdf",
+    "beamerthemefeinstein.sty"
   )
   targets <- c(
     paste(name, "README.org", sep="/"),
@@ -109,8 +114,13 @@ create_project <- function(name, title, author, email, inst, root) {
     paste(name, "/ext/LaTeX/", "script.xlb", sep=""),
     paste(name, "/ext/", "scientifictemplate.ott", sep=""),
     paste(name, "/ext/", "install_macro.sh", sep=""),
-    paste(name, "/ext/", "uninstall_macro.sh", sep="")
-    paste(name, "/ext/", "dotemacs", sep="")
+    paste(name, "/ext/", "uninstall_macro.sh", sep=""),
+    paste(name, "/ext/", "dotemacs", sep=""),
+    paste(name, "/ext/logos/", "logo.pdf", sep=""),
+    paste(name, "/ext/logos/", "logo_feinstein.pdf", sep=""),
+    paste(name, "/ext/logos/", "github.pdf", sep=""),
+    paste(name, "/ext/logos/", "twitter.pdf", sep=""),
+    paste(name, "/ext/", "beamerthemefeinstein.sty", sep="")
   )
   
   #dir.create(project_name)
